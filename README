@@ -1,0 +1,81 @@
+Discount Module
+This project implements a discount module for calculating the final price of an order by applying multiple discount campaigns. The module supports various types of discounts including fixed amount coupons, percentage discounts, points discounts, category-specific discounts, and seasonal discounts.
+
+Features
+- Fixed Amount Coupon: Subtracts a fixed amount from the total price.
+- Percentage Coupon: Reduces the total price by a percentage.
+- Category Percentage Discount: Applies a percentage discount to items in a specific category.
+- Points Discount: Allows users to use points for a discount, capped at 20% of the total price.
+- Seasonal Discount: Subtracts a fixed amount at intervals of a specified amount.
+
+Installation
+- Prerequisites
+- Go (version 1.20 or higher)
+- Git (for version control and Makefile)
+
+Installing Dependencies
+- Clone the repository and install the necessary Go modules:
+- git clone https://github.com/yourusername/discount-module.git
+- cd discount-module
+- go mod tidy
+
+Building the Application
+To build the application, run:
+- make build
+This will generate an executable in the build directory.
+
+Usage
+Running the Application
+To run the application, use the following command:
+- make run
+
+Running Tests
+To run the tests, execute:
+- make test
+
+Format the Code:
+- make fmt
+
+Clean Up:
+- make clean
+
+####IMPORTANT####
+Configuration
+The discount module reads configuration from a JSON file. Below is an example configuration file cart.json:
+{
+  "items": [
+    {"name": "T-Shirt", "category": "Clothing", "price": 350},
+    {"name": "Hat", "category": "Accessories", "price": 250},
+    {"name": "Belt", "category": "Accessories", "price": 230}
+  ],
+  "discounts": [
+    {"type": "fixed_amount_coupon", "amount": 50},
+    {"type": "percentage_coupon", "percentage": 10},
+    {"type": "category_percentage", "category": "Clothing", "percentage": 15},
+    {"type": "points_discount", "points": 68},
+    {"type": "seasonal", "every_x_thb": 300, "discount_y_thb": 40}
+  ]
+}
+
+Example Usage
+1. Create a Cart JSON File:
+{
+  "items": [
+    {"name": "T-Shirt", "category": "Clothing", "price": 350},
+    {"name": "Hat", "category": "Accessories", "price": 250}
+  ],
+  "discounts": [
+    {"type": "fixed_amount_coupon", "amount": 50},
+    {"type": "percentage_coupon", "percentage": 10}
+  ]
+}
+2. Run the Application:
+- make run
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Contact
+Author: Pongsakorn Kitalreewan
+Email: pongsakornkit@gmail.com
+GitHub: [github.com/](https://github.com/SenBedotcom)
