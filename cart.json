@@ -1,0 +1,14 @@
+{
+	"items": [
+		{"name": "T-Shirt", "category": "Clothing", "price": 350},
+		{"name": "Hat", "category": "Accessories", "price": 250},
+		{"name": "Belt", "category": "Accessories", "price": 230}
+	],
+	"discounts": [
+		{"type": "fixed_amount_coupon", "amount": 50},
+		{"type": "percentage_coupon", "percentage": 10},
+		{"type": "category_percentage", "category": "Clothing", "percentage": 15},
+		{"type": "points_discount", "points": 68},
+		{"type": "seasonal", "every_x_thb": 300, "discount_y_thb": 40}
+	]
+}

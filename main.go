@@ -1,8 +1,10 @@
 package main
 
 import (
+	"discount-module/domain/discount"
 	"discount-module/model"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 )
@@ -10,7 +12,7 @@ import (
 func main() {
 	// Read json file
 
-	data, err := ioutil.ReadFile("filename")
+	data, err := ioutil.ReadFile("cart.json")
 	if err != nil {
 		log.Fatalf("Error readig Json file: %v", err)
 	}
@@ -19,7 +21,7 @@ func main() {
 
 	var cart model.Cart
 	if err := json.Unmarshal(data, &cart); err != nil {
-		log.Fatal("Error parsing JSON data: %v", err)
+		log.Fatalf("Error parsing JSON data: %v", err)
 	}
 
 	// Calculate total price
@@ -27,4 +29,7 @@ func main() {
 	for _, item := range cart.Items {
 		totalPrice += item.Price
 	}
+
+	finalPrice := discount.ApplyDiscounts(totalPrice, cart.Items, cart.Discounts)
+	fmt.Printf("Final Price: %.2f THB\n", finalPrice)
 }
