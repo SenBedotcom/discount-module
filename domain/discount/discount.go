@@ -3,13 +3,11 @@ package discount
 import (
 	filtertype "discount-module/domain/filterType"
 	"discount-module/model"
-	"fmt"
 	"math"
 )
 
 func ApplyDiscounts(totalPrice float64, items []model.Item, discounts []model.Discount) float64 {
 	// filter and apply coupon
-	fmt.Println(discounts)
 	couponDiscount := filtertype.FilterCouponDiscount(discounts)
 	totalPrice = ApplyCouponDiscounts(totalPrice, couponDiscount)
 
